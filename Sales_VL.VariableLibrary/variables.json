@@ -6,6 +6,18 @@
       "note": "",
       "type": "String",
       "value": "975c98a8-9070-4f0a-8aa5-e975b293ccef"
+    },
+    {
+      "name": "workspace_id",
+      "note": "",
+      "type": "String",
+      "value": ""
+    },
+    {
+      "name": "lakehouse_id",
+      "note": "",
+      "type": "String",
+      "value": ""
     }
   ]
 }
