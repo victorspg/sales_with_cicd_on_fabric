@@ -25,6 +25,10 @@ jobs:
           -u ${{ secrets.AZURE_CLIENT_ID }} \
           -p ${{ secrets.AZURE_CLIENT_SECRET }} \
           --tenant ${{ secrets.AZURE_TENANT_ID }}
+      
+    - name: Get DEV Connection Details
+      run: |
+        fab get '.connections/https://vmspdatalake001.dfs.core.windows.net/ admin.Connection'
 
     - name: Create ADLS Gen2 Fabric Connection
       shell: pwsh
