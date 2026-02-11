@@ -32,6 +32,7 @@ jobs:
           | .creationMethods[]
           | {method: .name, parameters: .parameters}' supportedConnectionTypes.json
 
+    - name : Print Params
       run: |
         cat supportedConnectionTypes.json
 
