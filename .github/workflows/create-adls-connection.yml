@@ -30,7 +30,7 @@ jobs:
       shell: pwsh
       run: |
         ./scripts/create_adls_connection.ps1 `
-          -ConnectionName "adlsgen2-prod" `
+          -ConnectionName "vmspdatalake001prod" `
           -TenantId "${{ secrets.AZURE_TENANT_ID }}" `
           -ClientId "${{ secrets.AZURE_CLIENT_ID }}" `
           -ClientSecret "${{ secrets.AZURE_CLIENT_SECRET }}" `

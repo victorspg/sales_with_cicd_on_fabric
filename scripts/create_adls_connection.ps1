@@ -9,13 +9,15 @@ param (
 
 Write-Host "Creating Fabric ADLS Gen2 connection: $ConnectionName"
 
-fab create ".connections/$ConnectionName.connection" `
-  -P `
-  connectionDetails.type=AzureDataLakeStorageGen2,`
-  connectionDetails.creationMethod=AzureDataLakeStorageGen2.Contents,`
-  connectionDetails.parameters.accountName=$StorageAccount,`
-  connectionDetails.parameters.fileSystem=$FileSystem,`
+$server = "$StorageAccount.dfs.core.windows.net"
+$fullPath = "/"
+
+fab create ".connections/$ConnectionName.Connection" -P `
+  connectionDetails.type=AzureDataLakeStorage,`
+  connectionDetails.creationMethod=AzureDataLakeStorage,`
+  connectionDetails.parameters.server=$server,`
+  connectionDetails.parameters.fullPath=$fullPath,`
   credentialDetails.type=ServicePrincipal,`
   credentialDetails.tenantId=$TenantId,`
   credentialDetails.servicePrincipalClientId=$ClientId,`
-  credentialDetails.servicePrincipalSecret=$ClientSecret
+  credentialDetails.service
