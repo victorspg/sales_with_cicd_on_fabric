@@ -18,6 +18,12 @@
       "note": "",
       "type": "String",
       "value": "de90dbe0-5fbe-478d-8db5-5dde67bc1cd6"
+    },
+    {
+      "name": "extra",
+      "note": "",
+      "type": "String",
+      "value": "aaa"
     }
   ]
 }
