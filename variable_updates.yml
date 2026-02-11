@@ -1,0 +1,29 @@
+# Fabric Variable Library Updates
+# ================================
+# Define all variable updates to apply across workspaces.
+# Each entry specifies a workspace, variable library, variable, value set, and new value.
+#
+# Usage:
+#   - The GitHub Actions workflow reads this file and applies each update sequentially.
+#   - Use value_set_name: "Default" to update the default value in variables.json.
+
+updates:
+  # ── SalesWS_DEV workspace ──────────────────────────────────────
+  - workspace_name: "SalesWS_DEV"
+    library_name: "Sales_VL"
+    variable_name: "workspace_id"
+    value_set_name: "PROD"
+    new_value: "ed3f2722-f25b-4655-afc8-893808e5615b"
+
+  # - workspace_name: "SalesWS_DEV"
+  #   library_name: "Sales_VL"
+  #   variable_name: "workspace_id"
+  #   value_set_name: "DEV"
+  #   new_value: "35196c76-930f-406e-b6c8-5293ea0531d2"
+
+  # ── Add more updates below ─────────────────────────────────────
+  # - workspace_name: "AnotherWorkspace"
+  #   library_name: "Another_VL"
+  #   variable_name: "connection_string"
+  #   value_set_name: "STAGING"
+  #   new_value: "Server=staging-db;Database=main"
