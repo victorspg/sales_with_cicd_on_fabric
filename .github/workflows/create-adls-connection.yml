@@ -1,0 +1,34 @@
+name: Create Fabric ADLS Gen2 Connection
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-connection:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Install Azure CLI + Fabric CLI
+      run: |
+        pip install microsoft-fabric-cli
+
+    - name: Azure Login (Service Principal)
+      run: |
+        az login --service-principal \
+          -u ${{ secrets.AZURE_CLIENT_ID }} \
+          -p ${{ secrets.AZURE_CLIENT_SECRET }} \
+          --tenant ${{ secrets.AZURE_TENANT_ID }}
+
+    - name: Create ADLS Gen2 Fabric Connection
+      shell: pwsh
+      run: |
+        ./scripts/create_adls_connection.ps1 `
+          -ConnectionName "adlsgen2-prod" `
+          -TenantId "${{ secrets.AZURE_TENANT_ID }}" `
+          -ClientId "${{ secrets.AZURE_CLIENT_ID }}" `
+          -ClientSecret "${{ secrets.AZURE_CLIENT_SECRET }}" `
+          -StorageAccount "${{ secrets.ADLS_ACCOUNT_NAME }}" `
+          -FileSystem "${{ secrets.ADLS_FILESYSTEM }}"
