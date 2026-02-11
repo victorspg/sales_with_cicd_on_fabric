@@ -28,7 +28,7 @@ jobs:
       
     - name: Get DEV Connection Details
       run: |
-        fab get '.connections/https://vmspdatalake001.dfs.core.windows.net/ admin.Connection'
+        fab ls .connections -l
 
     - name: Create ADLS Gen2 Fabric Connection
       shell: pwsh
