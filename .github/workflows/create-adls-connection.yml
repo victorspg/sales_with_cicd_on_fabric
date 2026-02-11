@@ -13,7 +13,7 @@ jobs:
 
     - name: Install Azure CLI + Fabric CLI
       run: |
-        pip install microsoft-fabric-cli
+        pip install ms-fabric-cli
 
     - name: Azure Login (Service Principal)
       run: |
