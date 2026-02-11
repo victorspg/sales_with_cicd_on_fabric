@@ -1,0 +1,10 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/variableLibrary/definition/valueSet/1.0.0/schema.json",
+  "name": "PROD",
+  "variableOverrides": [
+    {
+      "name": "sales_raw_copy_connection",
+      "value": "975c98a8-9070-4f0a-8aa5-e975b293ccef"
+    }
+  ]
+}

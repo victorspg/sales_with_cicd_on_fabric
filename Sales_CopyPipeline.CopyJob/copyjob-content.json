@@ -1,0 +1,173 @@
+{
+  "properties": {
+    "jobMode": "CDC",
+    "source": {
+      "type": "DelimitedText",
+      "connectionSettings": {
+        "type": "AzureBlobFS",
+        "externalReferences": {
+          "connection": "975c98a8-9070-4f0a-8aa5-e975b293ccef"
+        }
+      }
+    },
+    "destination": {
+      "type": "LakehouseTable",
+      "connectionSettings": {
+        "type": "Lakehouse",
+        "typeProperties": {
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "artifactId": "67bc1cd6-5dde-8db5-478d-5fbede90dbe0",
+          "rootFolder": "Tables"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00"
+    }
+  },
+  "activities": [
+    {
+      "id": "06143a23-2194-407e-ab82-9961eb497475",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "location": {
+              "type": "AzureBlobFSLocation",
+              "fileSystem": "raw"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental"
+          },
+          "storeSettings": {
+            "recursive": true,
+            "enablePartitionDiscovery": false
+          },
+          "formatSettings": {}
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "dbo",
+            "table": "bronze_sales"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "SalesOrderNumber",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "SalesOrderNumber",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SalesOrderLineNumber",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "SalesOrderLineNumber",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "OrderDate",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "OrderDate",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "CustomerName",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "CustomerName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "EmailAddress",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "EmailAddress",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Item",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Item",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Quantity",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Quantity",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "UnitPrice",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "UnitPrice",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "TaxAmount",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "TaxAmount",
+                "physicalType": "string"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    }
+  ]
+}

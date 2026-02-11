@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/variableLibrary/definition/variables/1.0.0/schema.json",
+  "variables": [
+    {
+      "name": "sales_raw_copy_connection",
+      "note": "",
+      "type": "String",
+      "value": "975c98a8-9070-4f0a-8aa5-e975b293ccef"
+    }
+  ]
+}
