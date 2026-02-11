@@ -28,7 +28,7 @@ jobs:
       
     - name: Get DEV Connection Details
       run: |
-        fab ls .connections -l
+        fab ls .connections -l | cat
 
     - name: Create ADLS Gen2 Fabric Connection
       shell: pwsh
