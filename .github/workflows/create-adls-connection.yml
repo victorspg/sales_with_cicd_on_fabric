@@ -25,7 +25,9 @@ jobs:
           -u ${{ secrets.AZURE_CLIENT_ID }} \
           -p ${{ secrets.AZURE_CLIENT_SECRET }} \
           --tenant ${{ secrets.AZURE_TENANT_ID }}
-
+    - name : Get ADLS Gen2 Fabric Connection Params
+      run: |
+        fab api -X get "connections/supportedConnectionTypes?showAllCreationMethods=true" > supportedConnectionTypes.json
     - name: Create ADLS Gen2 Fabric Connection
       shell: pwsh
       run: |
