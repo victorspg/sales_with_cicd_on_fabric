@@ -15,6 +15,7 @@ $path = "/"
 fab create ".connections/$ConnectionName.Connection" -P `
     connectionDetails.type=AzureDataLakeStorage, `
     connectionDetails.connectivityType=ShareableCloud, `
+    connectionDetails.connectionType=AzureDataLakeStorage, `
     connectionDetails.parameters.server=$server, `
     connectionDetails.parameters.path=$path, `
     credentialDetails.type=ServicePrincipal, `
