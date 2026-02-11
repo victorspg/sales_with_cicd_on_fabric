@@ -15,9 +15,9 @@ jobs:
       run: |
         pip install ms-fabric-cli
 
-    - name: Azure Login (Service Principal)
+    - name: Fabric CLI Login (Service Principal)
       run: |
-        az login --service-principal \
+        fab auth login \
           -u ${{ secrets.AZURE_CLIENT_ID }} \
           -p ${{ secrets.AZURE_CLIENT_SECRET }} \
           --tenant ${{ secrets.AZURE_TENANT_ID }}
