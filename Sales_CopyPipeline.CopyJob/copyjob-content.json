@@ -6,7 +6,10 @@
       "connectionSettings": {
         "type": "AzureBlobFS",
         "externalReferences": {
-          "connection": "975c98a8-9070-4f0a-8aa5-e975b293ccef"
+          "connectionVariableLibrary": {
+            "variableName": "sales_raw_copy_connection",
+            "libraryName": "Sales_VL"
+          }
         }
       }
     },
@@ -15,8 +18,14 @@
       "connectionSettings": {
         "type": "Lakehouse",
         "typeProperties": {
-          "workspaceId": "00000000-0000-0000-0000-000000000000",
-          "artifactId": "67bc1cd6-5dde-8db5-478d-5fbede90dbe0",
+          "workspaceIdVariableLibrary": {
+            "variableName": "workspace_id",
+            "libraryName": "Sales_VL"
+          },
+          "artifactIdVariableLibrary": {
+            "variableName": "lakehouse_id",
+            "libraryName": "Sales_VL"
+          },
           "rootFolder": "Tables"
         }
       }
