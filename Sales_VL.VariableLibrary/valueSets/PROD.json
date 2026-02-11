@@ -4,7 +4,11 @@
   "variableOverrides": [
     {
       "name": "sales_raw_copy_connection",
-      "value": "5c98a8-9070-4f0a-8aa5-e975b293ccef"
+      "value": "975c98a8-9070-4f0a-8aa5-e975b293ccef"
+    },
+    {
+      "name": "workspace_id",
+      "value": "ed3f2722-f25b-4655-afc8-893808e5615b"
     }
   ]
 }

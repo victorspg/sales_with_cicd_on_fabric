@@ -11,13 +11,13 @@
       "name": "workspace_id",
       "note": "",
       "type": "String",
-      "value": ""
+      "value": "35196c76-930f-406e-b6c8-5293ea0531d2"
     },
     {
       "name": "lakehouse_id",
       "note": "",
       "type": "String",
-      "value": ""
+      "value": "de90dbe0-5fbe-478d-8db5-5dde67bc1cd6"
     }
   ]
 }
