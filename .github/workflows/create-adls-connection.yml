@@ -27,7 +27,14 @@ jobs:
           --tenant ${{ secrets.AZURE_TENANT_ID }}
     - name : Get ADLS Gen2 Fabric Connection Params
       run: |
-        fab api -X get "connections/supportedConnectionTypes?showAllCreationMethods=true" > supportedConnectionTypes.json
+        fab api -X get "connections/supportedConnectionTypes?showAllCreationMethods=true" jq '.value[] 
+          | select(.type=="AzureDataLakeStorage")
+          | .creationMethods[]
+          | {method: .name, parameters: .parameters}' supportedConnectionTypes.json
+
+      run: |
+        cat supportedConnectionTypes.json
+
     - name: Create ADLS Gen2 Fabric Connection
       shell: pwsh
       run: |
