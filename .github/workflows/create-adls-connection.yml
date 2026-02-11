@@ -11,9 +11,13 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
 
-    - name: Install Azure CLI + Fabric CLI
+    - name: Install Fabric CLI
       run: |
         pip install ms-fabric-cli
+ 
+    - name: Configure Fabric CLI for CI/CD
+      run: |
+        fab config set encryption_fallback_enabled true
 
     - name: Fabric CLI Login (Service Principal)
       run: |
