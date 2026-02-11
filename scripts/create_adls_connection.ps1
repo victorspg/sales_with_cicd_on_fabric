@@ -12,4 +12,4 @@ Write-Host "Creating Fabric ADLS Gen2 connection: $ConnectionName"
 $server = "https://$StorageAccount.dfs.core.windows.net"
 $path = "/"
 
-fab create ".connections/$ConnectionName.Connection" -P connectionDetails.type=AzureDataLakeStorage,connectionDetails.creationMethod=AzureDataLakeStorage,credentialDetails.type=ServicePrincipal,credentialDetails.tenantId=$TenantId,credentialDetails.servicePrincipalClientId=$ClientId,credentialDetails.servicePrincipalSecret=$ClientSecret,connectionDetails.parameters.server=$server,connectionDetails.parameters.path=$path
+fab create ".connections/$ConnectionName.Connection" -P connectionDetails.type=AzureDataLakeStorage,connectionDetails.creationMethod=AzureDataLakeStorage,credentialDetails.type=ServicePrincipal,credentialDetails.tenantId=$TenantId,credentialDetails.servicePrincipalClientId=$ClientId,credentialDetails.servicePrincipalSecret=$ClientSecret
