@@ -13,9 +13,9 @@ $server = "https://$StorageAccount.dfs.core.windows.net"
 $path = "/"
 
 fab create ".connections/$ConnectionName.Connection" -P `
+    connectionDetails.connectionType=AzureDataLakeStorage, `
     connectionDetails.type=AzureDataLakeStorage, `
     connectionDetails.connectivityType=ShareableCloud, `
-    connectionDetails.connectionType=AzureDataLakeStorage, `
     connectionDetails.parameters.server=$server, `
     connectionDetails.parameters.path=$path, `
     credentialDetails.type=ServicePrincipal, `
