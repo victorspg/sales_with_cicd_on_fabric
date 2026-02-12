@@ -114,6 +114,37 @@ def create_adls_connection(
 
 
 # ---------------------------------------------------------------------------
+# Share Connection
+# ---------------------------------------------------------------------------
+def share_connection(token: str, connection_id: str, principal_id: str, principal_type: str = "User", role: str = "User"):
+    """Add a role assignment to a Fabric connection."""
+
+    url = f"{FABRIC_API_BASE}/connections/{connection_id}/roleAssignments"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+    }
+
+    body = {
+        "principal": {
+            "id": principal_id,
+            "type": principal_type,
+        },
+        "role": role,
+    }
+
+    print(f"Sharing connection {connection_id} with {principal_type} {principal_id} (role: {role})...")
+    response = requests.post(url, headers=headers, json=body)
+
+    if response.status_code in (200, 201):
+        print("Connection shared successfully!")
+    else:
+        print(f"Failed to share connection. Status: {response.status_code}")
+        print(f"Response: {response.text}")
+        sys.exit(1)
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
@@ -144,7 +175,7 @@ def main():
     print("Authentication successful.")
 
     # Create connection
-    create_adls_connection(
+    result = create_adls_connection(
         token=token,
         connection_name=connection_name,
         storage_account=storage_account,
@@ -153,6 +184,17 @@ def main():
         client_secret=client_secret,
         path=path,
     )
+
+    # Share connection with admin user
+    connection_id = result.get("id")
+    if connection_id:
+        share_connection(
+            token=token,
+            connection_id=connection_id,
+            principal_id="1034d73d-275e-43c1-a639-2bf0b06cfb69",
+            principal_type="User",
+            role="User",
+        )
 
 
 if __name__ == "__main__":
