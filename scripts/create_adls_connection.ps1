@@ -11,7 +11,7 @@ $ErrorActionPreference = "Stop"
 
 Write-Host "Creating Fabric ADLS Gen2 connection: $ConnectionName"
 
-$server = "https://${StorageAccount}.dfs.core.windows.net"
+$server = "${StorageAccount}.dfs.core.windows.net"
 $path = "/"
 
 Write-Host "Server: $server"
