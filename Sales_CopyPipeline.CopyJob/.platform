@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "CopyJob",
-    "displayName": "Sales_CopyPipeline"
+    "displayName": "Sales_CopyPipeline_Raw_to_Bronze"
   },
   "config": {
     "version": "2.0",
