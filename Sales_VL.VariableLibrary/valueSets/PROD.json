@@ -13,6 +13,14 @@
     {
       "name": "workspace_name",
       "value": "SalesWS_PROD"
+    },
+    {
+      "name": "lakehouse_id",
+      "value": "b792c6ae-e0f7-4438-b114-e52f2297050c"
+    },
+    {
+      "name": "sales_nb_bronze_to_silver_id",
+      "value": "c30ca028-7d45-43b8-97f8-35a860d03a98"
     }
   ]
 }
