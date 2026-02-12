@@ -36,10 +36,10 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r workflows/update-variable-libraries/requirements.txt
 
       - name: Run variable library updates
         run: |
-          python update_variable_library.py \
-            --config "${{ github.event.inputs.config_file }}" \
+          python workflows/update-variable-libraries/update_variable_library.py \
+            --config "workflows/update-variable-libraries/${{ github.event.inputs.config_file }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}

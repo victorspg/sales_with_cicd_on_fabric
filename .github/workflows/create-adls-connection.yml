@@ -28,4 +28,4 @@ jobs:
       run: pip install azure-identity requests
 
     - name: Create ADLS Gen2 Fabric Connection
-      run: python scripts/create_adls_connection.py
+      run: python workflows/create-adls-connection/create_adls_connection.py
