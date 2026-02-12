@@ -7,36 +7,25 @@ jobs:
   create-connection:
     runs-on: ubuntu-latest
 
+    env:
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      CONNECTION_NAME: ${{ secrets.CONNECTION_NAME }}
+      ADLS_ACCOUNT_NAME: ${{ secrets.ADLS_ACCOUNT_NAME }}
+      ADLS_PATH: "/"
+
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
 
-    - name: Install Fabric CLI
-      run: |
-        pip install ms-fabric-cli
- 
-    - name: Configure Fabric CLI for CI/CD
-      run: |
-        fab config set encryption_fallback_enabled true
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
 
-    - name: Fabric CLI Login (Service Principal)
-      run: |
-        fab auth login \
-          -u ${{ secrets.AZURE_CLIENT_ID }} \
-          -p ${{ secrets.AZURE_CLIENT_SECRET }} \
-          --tenant ${{ secrets.AZURE_TENANT_ID }}
-      
-    - name: Get DEV Connection Details
-      run: |
-        fab ls .connections -l | cat
+    - name: Install dependencies
+      run: pip install azure-identity requests
 
     - name: Create ADLS Gen2 Fabric Connection
-      shell: pwsh
-      run: |
-        ./scripts/create_adls_connection.ps1 `
-          -ConnectionName "vmspdatalake001prod" `
-          -TenantId "${{ secrets.AZURE_TENANT_ID }}" `
-          -ClientId "${{ secrets.AZURE_CLIENT_ID }}" `
-          -ClientSecret "${{ secrets.AZURE_CLIENT_SECRET }}" `
-          -StorageAccount "${{ secrets.ADLS_ACCOUNT_NAME }}" `
-          -FileSystem "${{ secrets.ADLS_FILESYSTEM }}"
+      run: python scripts/create_adls_connection.py
