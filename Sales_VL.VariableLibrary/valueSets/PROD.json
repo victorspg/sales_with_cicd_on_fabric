@@ -9,6 +9,10 @@
     {
       "name": "workspace_id",
       "value": "ed3f2722-f25b-4655-afc8-893808e5615b"
+    },
+    {
+      "name": "workspace_name",
+      "value": "SalesWS_PROD"
     }
   ]
 }
