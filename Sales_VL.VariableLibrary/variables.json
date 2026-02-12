@@ -30,6 +30,12 @@
       "note": "",
       "type": "String",
       "value": "Sales_LH"
+    },
+    {
+      "name": "sales_nb_bronze_to_silver_id",
+      "note": "",
+      "type": "String",
+      "value": "da2e1eb4-9337-4932-aa90-a36ae542ce6b"
     }
   ]
 }
